@@ -33,8 +33,12 @@ Student List
 						<td>{{$row['first_name']}}</td>
 						<td>{{$row['last_name']}}</td>
 						<td>
-							<a href="{{ action('StudentController@edit',$row['id']) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-							
+							<a href="{{ action('StudentController@edit',$row['id']) }}" class="btn btn-primary" style="float: left;"><i class="fa fa-edit"></i></a>
+							<form method="post" class="delete_form" action="{{action('StudentController@destroy', $row['id'])}}" style="margin-left: 10px; float: left;">
+								{{ csrf_field() }}
+								<input type="hidden" name="_method" value="DELETE">
+								<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+							</form>							
 						</td>
 						
 					</tr>
@@ -44,4 +48,16 @@ Student List
 			</table>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.delete_form').on('submit', function(){
+				if(confirm('Are you sure to delete this data?')){
+					return TRUE;
+				}
+				else{
+					return FALSE;
+				}
+			});
+		});
+	</script>
 @endsection
