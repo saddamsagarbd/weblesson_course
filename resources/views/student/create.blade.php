@@ -8,7 +8,7 @@
 			<br>
 			<h3>Add Student</h3>
 			<br>
-			<a href="route('student.index')" class="btn btn-sm btn-primary"><i class="fa fa-list"></i>&nbsp;Student List</a><br><br>
+			<a href="{{route('student.index')}}" class="btn btn-sm btn-primary"><i class="fa fa-list"></i>&nbsp;Student List</a><br><br>
 			@if(count($errors) > 0)
 			<div class="alert alert-danger">
 				<ul>
